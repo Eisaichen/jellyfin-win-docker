@@ -2,7 +2,7 @@
 
 EXPOSE 8096
 
-COPY ./nvdll/* C:/Windows
+COPY ./nvdll/* C:/Windows/
 COPY ./jellyfin c:/jellyfin/system
 
 RUN mkdir media && \
