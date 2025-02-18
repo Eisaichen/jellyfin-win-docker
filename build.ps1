@@ -16,7 +16,7 @@ if ($env:GH_CI_LATEST -eq "true") {
 # Build ltsc2025
 
 $i=Get-Content -Path .\build\Dockerfile
-Set-Content -Path .\Dockerfile -Value $($i.replace("FROM mcr.microsoft.com/windows/server:ltsc2022","FROM mcr.microsoft.com/windows/server:ltsc2025"))
+Set-Content -Path .\build\Dockerfile -Value $($i.replace("FROM mcr.microsoft.com/windows/server:ltsc2022","FROM mcr.microsoft.com/windows/server:ltsc2025"))
 
 if ($env:GH_CI_LATEST -eq "true") {
     docker build --isolation hyperv --no-cache --pull -t eisai/jellyfin-nvidia:ltsc2025 -t eisai/jellyfin-nvidia:$env:GH_CI_TAG-ltsc2025 .\build
