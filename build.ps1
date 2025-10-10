@@ -11,10 +11,13 @@ if ($env:GH_CI_LATEST -eq "true") {
 } else {
     docker build --isolation hyperv --no-cache --pull -t eisai/jellyfin-nvidia:$env:GH_CI_TAG .\build
 }
+# Push
 if ($env:GH_CI_PUSH -eq "true") {
     docker push eisai/jellyfin-nvidia -a
 }
+# Clean up
 docker system prune --all -f
+
 
 # Build ltsc2025
 
@@ -26,10 +29,7 @@ if ($env:GH_CI_LATEST -eq "true") {
 } else {
     docker build --isolation hyperv --no-cache --pull -t eisai/jellyfin-nvidia:$env:GH_CI_TAG-ltsc2025 .\build
 }
-
-
 # Push
-
 if ($env:GH_CI_PUSH -eq "true") {
     docker push eisai/jellyfin-nvidia -a
 }
