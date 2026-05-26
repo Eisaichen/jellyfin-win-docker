@@ -4,6 +4,14 @@
 Expand-Archive -Path .\jellyfin.zip -DestinationPath .\build\
 
 
+
+# Download driver
+
+git clone https://github.com/Eisaichen/nvidia-driver-docker .\build\nvdll
+Remove-Item -Path ".\build\nvdll\.git" -Recurse -Force
+
+
+
 # Build ltsc2022
 
 if ($env:GH_CI_LATEST -eq "true") {
